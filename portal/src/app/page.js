@@ -1,9 +1,20 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import StatusofRecords from './pages/stats';
+import Signin from './pages/signin';
+import Signup from './pages/signup';
 
+
+
+   //url(http://drive.google.com/uc?export=view&id=1x5FBM3hnFmBiz2dTOtmcoVW8ufDxJcaS)
+
+   
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="min-h-screen bg-cover bg-center bg-no-repeat "  >
 
-    </main>
-  )
+      <Signin/>
+    
+     
+    </div>
+  );
 }
