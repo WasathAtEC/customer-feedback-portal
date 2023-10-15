@@ -1,10 +1,10 @@
 import { Hidden } from "@mui/material";
-import ExpandableTable from "./expandableTable/ExpandableTable";
-import Navbar from "./navbar";
-import NewTable from "./newTable";
-import DatefilterExpandable from "./components/datefilterExpandabe";
-import CompanyFilterExpandable from "./components/companyfilterExpandable";
-import CategoryFilterExpandable from "./components/categoryFilterExpandable";
+import ExpandableTable from "../expandableTable/ExpandableTable";
+import Navbar from "../navbar";
+import NewTable from "../newTable";
+import DatefilterExpandable from "../components/datefilterExpandabe";
+import CompanyFilterExpandable from "../components/companyfilterExpandable";
+import CategoryFilterExpandable from "../components/categoryFilterExpandable";
 
 export default function ECportal() {
 
@@ -65,16 +65,15 @@ export default function ECportal() {
     <div className=" flex flex-col items-center  " style={{overflowX:Hidden}}>
 
       <Navbar/>
-      <div className="w-5/6  flex flex-col pb-20">
+      <div className="w-5/6  flex justify-between pt-10 pb-20">
         <div className="py-5">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">Issue Portal</h1>
         </div>
 
         <div className="flex items-center ">
           
-
-        <DatefilterExpandable/>
         <CompanyFilterExpandable/>
+        <DatefilterExpandable/>
         <CategoryFilterExpandable/>
 
         </div>

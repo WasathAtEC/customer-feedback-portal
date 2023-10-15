@@ -144,7 +144,7 @@ export default function Signup() {
                   {formErrors.firstName && <span className="text-red-500">{formErrors.firstName}</span>}
                   <label
                     htmlFor="firstName"
-                    className="w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                    className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                   >
                     First Name
                   </label>
@@ -166,7 +166,7 @@ export default function Signup() {
                   {formErrors.lastName && <span className="text-red-500 z-10000">{formErrors.lastName}</span>}
                   <label
                     htmlFor="lastName"
-                    className="w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                    className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                   >
                     Last Name
                   </label>
@@ -188,7 +188,7 @@ export default function Signup() {
                   {formErrors.email && <span className="text-red-500 z-10000">{formErrors.email}</span>}
                   <label
                     htmlFor="email"
-                    className="w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                    className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                   >
                     Email Address
                   </label>
@@ -209,7 +209,7 @@ export default function Signup() {
                   {formErrors.password && <span className="text-red-500 z-10000">{formErrors.password}</span>}
                   <label
                     htmlFor="password"
-                    className="w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                    className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                   >
                     Password
                   </label>
@@ -229,7 +229,7 @@ export default function Signup() {
                   {formErrors.confirmPassword && <span className="text-red-500 z-10000">{formErrors.confirmPassword}</span>}
                   <label
                     htmlFor="confirmPassword"
-                    className="w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                    className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                   >
                   Confirm Password
                   </label>

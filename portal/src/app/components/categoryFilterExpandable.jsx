@@ -1,7 +1,7 @@
 export default function CategoryFilterExpandable(){
     return(
         <div className="dropdown ">
-        <label tabIndex={0} className="btn rounded-xl bg-custom-blue">Filter by Category</label>
+        <label tabIndex={0} className="ml-5 btn rounded-xl bg-custom-blue">Filter by Category</label>
 
           <div  tabIndex={0} className="dropdown-content flex z-[1000] menu p-2 shadow-xl bg-base-100 rounded-box w-full">
 

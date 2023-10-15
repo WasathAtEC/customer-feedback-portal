@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +8,8 @@ import { useState } from "react";
 import BgImage from "../components/bgImage";
 
 export default function Signin() {
+
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -17,6 +20,8 @@ export default function Signin() {
     email: "",
     password: "",
   });
+
+ 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +36,9 @@ export default function Signin() {
     });
   };
 
+  
   const handleSubmit = async(e) => {
+    
     e.preventDefault();
     
     // Check for empty fields and set errors if needed
@@ -47,12 +54,27 @@ export default function Signin() {
     if (Object.values(newErrors).some((error) => error !== "")) {
       setErrors(newErrors);
     } else {
-      // Form is valid, you can handle the submission logic here
+      // Form is valid,  handling the submission logic 
       console.log("Form submitted:", formData);
 
       try{
+       
         const response = await axios.post('http://localhost:8000/api/v1/user/login', formData);
         console.log('Logged In Successfully: ' ,response.data);
+
+        const userCompany = response.data.company;
+        const token = response.data.token;
+
+        // console.log('Ur token is:',token );
+        
+        localStorage.setItem('accessToken', token);
+
+        if(userCompany === 'EC'){
+          router.push('/ECportal');
+        } else{
+          router.push('/Portal');
+        }
+
       }
       
       catch (error){

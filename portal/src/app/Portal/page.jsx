@@ -1,9 +1,9 @@
 import { Hidden } from "@mui/material";
-import ExpandableTable from "./expandableTable/ExpandableTable";
-import Navbar from "./navbar";
-import NewTable from "./newTable";
-import DatefilterExpandable from "./components/datefilterExpandabe";
-import CategoryFilterExpandable from "./components/categoryFilterExpandable";
+import ExpandableTable from "../expandableTable/ExpandableTable";
+import Navbar from "../navbar";
+import NewTable from "../newTable";
+import DatefilterExpandable from "../components/datefilterExpandabe";
+import CategoryFilterExpandable from "../components/categoryFilterExpandable";
 
 export default function Portal() {
 
@@ -64,7 +64,7 @@ export default function Portal() {
     <div className=" flex flex-col items-center  " style={{overflowX:Hidden}}>
 
       <Navbar/>
-      <div className="w-5/6  flex flex-col pb-20">
+      <div className="w-5/6  flex justify-between pt-10 pb-20">
         <div className="py-5">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">Issue Portal</h1>
         </div>
@@ -82,7 +82,7 @@ export default function Portal() {
         <h2 className="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-3xl">Solved Issues</h2>
       </div>
 
-      <div className="flex justify-center items-center text-center h-full w-full">
+      <div className="flex justify-center items-center text-center h-full w-5/6">
       <NewTable data={data} />
 
       </div>
