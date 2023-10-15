@@ -1,5 +1,5 @@
 import Image from 'next/image';
-
+import ECportal from './ECportal';
 import Portal from './portal';
 import Showissue from './showIssue/page';
 import Signin from './signin/page';
@@ -21,7 +21,7 @@ import CollapsibleTable from './tabledemo';
 export default function Home() {
   return (
    <div>
-    <Portal/>
+    <Signin/>
    </div>
   );
 }

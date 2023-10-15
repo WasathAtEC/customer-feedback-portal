@@ -3,9 +3,10 @@ import ExpandableTable from "./expandableTable/ExpandableTable";
 import Navbar from "./navbar";
 import NewTable from "./newTable";
 import DatefilterExpandable from "./components/datefilterExpandabe";
+import CompanyFilterExpandable from "./components/companyfilterExpandable";
 import CategoryFilterExpandable from "./components/categoryFilterExpandable";
 
-export default function Portal() {
+export default function ECportal() {
 
   const data = [
     {
@@ -73,16 +74,17 @@ export default function Portal() {
           
 
         <DatefilterExpandable/>
+        <CompanyFilterExpandable/>
         <CategoryFilterExpandable/>
 
         </div>
       </div>
 
-      <div className=" pb-5  ">
-        <h2 className="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-3xl">Solved Issues</h2>
+      <div className="  pb-10 ">
+        <h2 className="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-3xl">Recent Issues</h2>
       </div>
-
-      <div className="flex justify-center items-center text-center h-full w-full">
+    
+      <div className="flex justify-center items-center text-center h-full w-5/6">
       <NewTable data={data} />
 
       </div>
@@ -91,7 +93,7 @@ export default function Portal() {
         <h2 className="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-3xl">Solved Issues</h2>
       </div>
 
-      <div className="flex justify-center  items-center text-center h-full w-5/6 ">
+      <div className="flex justify-center  items-center text-center h-full w-full ">
       <ExpandableTable data ={data}/>
 
       </div>
