@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios';
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -19,10 +20,9 @@ export default function Signin() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData(
+      {...formData,[name]: value,}
+    );
 
     // Clear the error message when the user starts typing in the input field
     setErrors({
@@ -31,7 +31,7 @@ export default function Signin() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     
     // Check for empty fields and set errors if needed
@@ -49,9 +49,18 @@ export default function Signin() {
     } else {
       // Form is valid, you can handle the submission logic here
       console.log("Form submitted:", formData);
+
+      try{
+        const response = await axios.post('http://localhost:8000/api/v1/user/login', formData);
+        console.log('Logged In Successfully: ' ,response.data);
+      }
+      
+      catch (error){
+          console.log('Error logging in:', error);
+      }
       
       // Reload the page after form submission
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
@@ -63,7 +72,11 @@ export default function Signin() {
           <h1 className="text-6xl font-semibold text-custom-txt-blue">SIGN IN</h1>
         </div>
         <div className="text-center w-5/6">
+
+
           <form onSubmit={handleSubmit}>
+
+
             <div className="mb-6">
               <div className="relative">
                 <input
@@ -71,7 +84,7 @@ export default function Signin() {
                   name="email"
                   id="email"
                   placeholder="Email Address"
-                  className="rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                  className="text-center rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                   autoComplete="off"
                   value={formData.email}
                   onChange={handleChange}
@@ -79,27 +92,30 @@ export default function Signin() {
                 {errors.email && <p className="text-red-500">{errors.email}</p>}
                 <label
                   htmlFor="email"
-                  className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                  className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                 >
                   Email Address
                 </label>
               </div>
             </div>
+
+
             <div className="mb-6">
+
               <div className="relative">
                 <input
                   type="password"
                   name="password"
                   id="password"
                   placeholder="Password"
-                  className="rounded-full peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                  className="text-center rounded-full peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                   value={formData.password}
                   onChange={handleChange}
                 />
                 {errors.password && <p className="text-red-500">{errors.password}</p>}
                 <label
                   htmlFor="password"
-                  className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
+                  className="font-semibold w-full pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:-top-1/4 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800"
                 >
                   Password
                 </label>

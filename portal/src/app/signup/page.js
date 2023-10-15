@@ -102,9 +102,15 @@ export default function Signup() {
         const response = await axios.post('http://localhost:8000/api/v1/user/register', formData);
         console.log('User registered successfully:', response.data);
         // Redirect or show a success message here
+
+
       } catch (error) {
         console.error('Error registering user:', error);
         // Handle registration error
+      }
+      finally{
+        //Reloading the page after a successful registration
+        window.location.reload();
       }
 
       }
@@ -132,7 +138,7 @@ export default function Signup() {
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                    className="text-center rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                     autoComplete="off"
                   />
                   {formErrors.firstName && <span className="text-red-500">{formErrors.firstName}</span>}
@@ -154,7 +160,7 @@ export default function Signup() {
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                    className="text-center rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                     autoComplete="off"
                   />
                   {formErrors.lastName && <span className="text-red-500 z-10000">{formErrors.lastName}</span>}
@@ -176,7 +182,7 @@ export default function Signup() {
                     placeholder="Email Address"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                    className="text-center rounded-full peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                     autoComplete="off"
                   />
                   {formErrors.email && <span className="text-red-500 z-10000">{formErrors.email}</span>}
@@ -198,7 +204,7 @@ export default function Signup() {
                     placeholder="Password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="rounded-full peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                    className="text-center rounded-full peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                   />
                   {formErrors.password && <span className="text-red-500 z-10000">{formErrors.password}</span>}
                   <label
@@ -218,7 +224,7 @@ export default function Signup() {
                     placeholder="Confirm Password"
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
-                    className="rounded-full peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+                    className="text-center rounded-full peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
                   />
                   {formErrors.confirmPassword && <span className="text-red-500 z-10000">{formErrors.confirmPassword}</span>}
                   <label
