@@ -12,7 +12,7 @@ export default function Portal() {
 
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const [apiData, setApiData] = useState([]);
 
@@ -27,12 +27,21 @@ export default function Portal() {
 
   const apiUrl = 'http://localhost:8000/api/v1/feedback/get-all-feedbacks';
   const params = {
-    isFixed: [false, true],
-    date: selectedDate,
+    isFixed: [false],
+    
     issueCategory: selectedCategory !== '' ? [selectedCategory] : [],
+  };
+
+  if(selectedDate != null){
+    params.date = convertDate(selectedDate);
+  }
+
+
+
+   
 
     // ['Issue 1','Issue 2', 'Issue 3', 'Issue 4']
-  };
+ 
 
   const headers = {
     Authorization: `Bearer ${token}`, 
@@ -47,9 +56,11 @@ export default function Portal() {
    
     console.log('API response:', response.data.feedbacks);
     setApiData(response.data.feedbacks);
-    
+   
     console.log('API Feedbacks response',response.data.feedbacks);
-    console.log(selectedDate);
+    
+
+
 
   })
   .catch((error) => {
@@ -58,7 +69,7 @@ export default function Portal() {
   });
 
 
- }, [selectedCategory]); 
+ }, [selectedDate, selectedCategory] ); 
 
  function handleLogout() {
   // Clear the token from local storage
@@ -68,7 +79,20 @@ export default function Portal() {
   
   router.push('/signin'); 
 }
+  console.log(selectedDate);
+
+
+function convertDate(inputDate) {
+  const dateParts = inputDate.split('-');
   
+  if (dateParts.length === 3) {
+    // Rearrange the date parts to the desired format (MM/DD/YYYY)
+    const formattedDate = `${dateParts[1]}/${dateParts[2]}/${dateParts[0]}`;
+    return formattedDate;
+  } else {
+    return "Invalid date format";
+  }
+}
 
 
   
@@ -96,8 +120,8 @@ export default function Portal() {
             <label tabIndex={0} className="ml-5 btn rounded-xl bg-custom-blue ">Filter by Date</label>
 
             <div tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow-2xl bg-base-100 rounded-box w-23">
-            <input className="rounded-full w-full" type="date" id='dateFilter'  value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}/>
+            <input className="rounded-full w-full" type="date" id='dateFilter'  value={(selectedDate)  || ''}
+          onChange={(e) => setSelectedDate(e.target.value || '')}/>
         </div>
           </div>
 

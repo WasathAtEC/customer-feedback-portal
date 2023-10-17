@@ -33,12 +33,17 @@ export default function Portal() {
   const apiUrl = 'http://localhost:8000/api/v1/feedback/get-feedbacks-by-company-and-issue-category';
   const params = {
     isFixed: [false, true],
-    date: selectedDate,
+    
     companyName: ['Company1', 'Company2', 'Company3', 'Company4', 'EC'],
     issueCategory:  selectedCategory !== '' ? [selectedCategory] : [],
     // 
     // ['Issue 1','Issue 2', 'Issue 3', 'Issue 4']
   };
+
+  if(selectedDate != null){
+    params.date = convertDate(selectedDate);
+  }
+
 
   const headers = {
     Authorization: `Bearer ${token}`, 
@@ -64,7 +69,7 @@ export default function Portal() {
   });
 
 
- }, [selectedCategory], [selectedCompanies]); 
+ }, [selectedCategory,selectedDate]); 
 
  function handleLogout() {
   // Clear the token from local storage
@@ -73,6 +78,18 @@ export default function Portal() {
   // Redirect to the login page
   
   router.push('/signin'); // Adjust the route as needed.
+}
+
+function convertDate(inputDate) {
+  const dateParts = inputDate.split('-');
+  
+  if (dateParts.length === 3) {
+    // Rearrange the date parts to the desired format (MM/DD/YYYY)
+    const formattedDate = `${dateParts[1]}/${dateParts[2]}/${dateParts[0]}`;
+    return formattedDate;
+  } else {
+    return "Invalid date format";
+  }
 }
 
 
@@ -94,7 +111,7 @@ export default function Portal() {
 
       <div className="w-5/6  flex justify-between pt-10 pb-20">
         <div className="py-5">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">Issue Portal</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">EC Issue Portal</h1>
         </div>
 
         <div className="flex items-center ">
@@ -102,39 +119,7 @@ export default function Portal() {
          <ReloadButton/>
 
          {/* CompanyFilterCategoryExpandable */}
-         <div className="dropdown ">
-        <label tabIndex={0} className="btn rounded-xl bg-custom-blue ml-5">Filter by Company</label>
-
-          <div  tabIndex={0} className="dropdown-content flex z-[1000] menu p-2 shadow-xl bg-base-100 rounded-box w-full">
-           
-          <label className="my-2">
-           <input type="radio" name='companySelect' value="Company1" id="Company1" onChange={handleCompanyChange}
-           checked={selectedCompanies === 'Company1'} /> Company 1
-          </label>
-          
-          <label className="my-2">
-            <input type="radio" name='companySelect' value="Company2" id="Company2" onChange={handleCompanyChange}
-            checked={selectedCompanies === 'Company2'}/>  Company 2
-          </label>
-
-          <label className="my-2">
-            <input type="radio" name='companySelect' value="Company3" id="Company3" onChange={handleCompanyChange}
-            checked={selectedCompanies === 'Company3'}/>  Company 3
-          </label>
-
-          <label className="my-2">
-            <input type="radio" name='companySelect' value="Company4" id="Company4" onChange={handleCompanyChange}
-            checked={selectedCompanies === 'Company4'}/>  Company 4
-          </label>
-
-          <label className="my-2">
-            <input type="radio" name='companySelect' value="EC" id="EC" onChange={handleCompanyChange}
-            checked={selectedCompanies === 'EC'}/>  EC
-          </label>
-          
-          </div>
-        </div>
-
+       
 
 
         {/* <DatefilterExpandable/> */}
@@ -142,8 +127,8 @@ export default function Portal() {
             <label tabIndex={0} className="ml-5 btn rounded-xl bg-custom-blue">Filter by Date</label>
 
             <div tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow-2xl bg-base-100 rounded-box w-23">
-            <input className="rounded-full w-full" type="date" id='dateFilter'  value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}/>
+            <input className="rounded-full w-full" type="date" id='dateFilter'  value={(selectedDate)  || ''}
+          onChange={(e) => setSelectedDate(e.target.value || '')}/>
         </div>
           </div>
 

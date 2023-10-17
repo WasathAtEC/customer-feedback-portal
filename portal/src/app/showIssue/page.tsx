@@ -1,4 +1,6 @@
 "use client";
+
+import { useRouter } from 'next/navigation';
 import React from "react";
 import Navbar from "../navbar"
 import Image from "next/image"
@@ -10,6 +12,8 @@ function ShowIssue({ searchParams }: {
     id: string;
   };
 }) {
+
+  const router = useRouter();
 
   // <h1>ID from URL: {searchParams.id}</h1>
   const [message, setMessage] = useState('');
@@ -81,6 +85,7 @@ function ShowIssue({ searchParams }: {
       alert('Message sent successfully');
       
       setMessage('');
+      
     } else {
       
       alert('Failed to send message');
@@ -88,6 +93,8 @@ function ShowIssue({ searchParams }: {
   };
 
 
+
+ 
 
   return (
     <div className="flex flex-col ">
@@ -126,7 +133,7 @@ function ShowIssue({ searchParams }: {
      <h2 className="font-bold pr-10">Issue: </h2>
     </div>
 
-    <div className="w-1/3 bg-blue-50 rounded-lg text-center p-3 ">
+    <div className="w-1/3 bg-blue-50 rounded-lg text-center p-3  h-full ">
         <p>
         {data.message}
         </p>
@@ -145,7 +152,7 @@ function ShowIssue({ searchParams }: {
 
     </div>
 
-<Image alt="IssueImage" src={data.imageUrl} width={"500"} height={"100"}   className="rounded-lg" />
+<Image alt="IssueImage" src={data.imageUrl} width={"500"} height={"100"}   className="rounded-lg w-full h-full" />
     
     </div>
 </div>  
