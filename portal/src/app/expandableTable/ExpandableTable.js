@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Tabledata from './tableData';
-import Showissue from '../showIssue/page';
+
 
 const ExpandableTable = ({ data }) => {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -37,7 +37,7 @@ const ExpandableTable = ({ data }) => {
                 <div  className=" bg-gray-200"> 
                     <div id='name'>
                         
-                        <Showissue/>
+                   
                     </div>
                   </div>
                 </td>

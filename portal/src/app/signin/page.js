@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import BgImage from "../components/bgImage";
 
@@ -78,7 +77,7 @@ export default function Signin() {
       }
       
       catch (error){
-          console.log('Error logging in:', error);
+          alert('Error logging in:', error);
       }
       
       // Reload the page after form submission

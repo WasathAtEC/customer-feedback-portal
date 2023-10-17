@@ -1,12 +1,8 @@
 import Image from 'next/image';
 import ECportal from './ECportal/page';
 import Portal from './Portal/page';
-import Showissue from './showIssue/page';
 import Signin from './signin/page';
-import Table from './table';
-import ExpandableTable from './expandableTable/ExpandableTable';
-import Tabledata from './expandableTable/tableData';
-import NewTable from './newTable';
+
 
 import CollapsibleTable from './tabledemo';
 
