@@ -1,34 +1,17 @@
- "use client";
+"use client";
 
 import axios from 'axios';
 import Link from "next/link";
 import BgImage from "../components/bgImage";
 import React, { useState } from 'react';
 
-/*const registerUser = async () => {
-  try {
-    const response = await axios.post('http://localhost:8000/api/v1/user/register', formData);
-    // Handle the response as needed
-    console.log('User registered successfully:', response.data);
-  } catch (error) {
-    // Handle any errors here
-    console.error('Error registering user:', error);
-  }
-};
-*/
+
 
 export default function Signup() {
 
-
-  //Company Selection Control
   const [selectedOption, setSelectedOption] = useState('');
 
-  // const handleOptionChange = (event) => {
-  //   setSelectedOption(event.target.value);
-  // };
-
-
-  //Form Validation
+ 
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -100,16 +83,16 @@ export default function Signup() {
 
       try {
         const response = await axios.post('http://localhost:8000/api/v1/user/register', formData);
-        console.log('User registered successfully:', response.data);
-        // Redirect or show a success message here
+        alert('User registered successfully:');
+        
 
 
       } catch (error) {
-        console.error('Error registering user:', error);
-        // Handle registration error
+        alert('Error registering user:');
+        
       }
       finally{
-        //Reloading the page after a successful registration
+        
         window.location.reload();
       }
 

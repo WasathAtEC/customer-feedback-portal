@@ -25,9 +25,9 @@ export default function Portal() {
 
   const token = localStorage.getItem('accessToken');
 
-  const apiUrl = 'http://localhost:8000/api/v1/feedback/get-all-feedbacks';
+  const apiUrl = 'http://ec-api.czduhsdfatdud7bz.eastus.azurecontainer.io/api/v1/feedback/get-all-feedbacks';
   const params = {
-    isFixed: [false],
+    isFixed: [],
     
     issueCategory: selectedCategory !== '' ? [selectedCategory] : [],
   };
@@ -35,13 +35,6 @@ export default function Portal() {
   if(selectedDate != null){
     params.date = convertDate(selectedDate);
   }
-
-
-
-   
-
-    // ['Issue 1','Issue 2', 'Issue 3', 'Issue 4']
- 
 
   const headers = {
     Authorization: `Bearer ${token}`, 
@@ -144,12 +137,12 @@ function convertDate(inputDate) {
           </label>  
 
           <label className="my-2">
-            <input type="radio" name="cat" value="Issue 3" id="Issue 3"  checked={selectedCategory === 'Issue 3'} // Step 4
+            <input type="radio" name="cat" value="Issue 3" id="Issue 3"  checked={selectedCategory === 'Issue 3'} 
               onChange={handleCategoryChange}/>  Issue 3
           </label>
 
           <label className="my-2">
-            <input type="radio" name="cat" value="Issue 4" id="Issue 4" checked={selectedCategory === 'Issue 4'} // Step 4
+            <input type="radio" name="cat" value="Issue 4" id="Issue 4" checked={selectedCategory === 'Issue 4'} 
               onChange={handleCategoryChange}/>  Issue 4
           </label>
 

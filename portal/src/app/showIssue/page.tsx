@@ -71,7 +71,7 @@ function ShowIssue({ searchParams }: {
       message: message,
     };
 
-    const response = await fetch(`http://localhost:8000/api/v1/feedback/reply-feedback/${searchParams.id}`, {
+    const response = await fetch(`http://ec-api.czduhsdfatdud7bz.eastus.azurecontainer.io/api/v1/feedback/reply-feedback/${searchParams.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

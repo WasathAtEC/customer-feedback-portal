@@ -28,7 +28,7 @@ export default function Signin() {
       {...formData,[name]: value,}
     );
 
-    // Clear the error message when the user starts typing in the input field
+
     setErrors({
       ...errors,
       [name]: "",
@@ -58,13 +58,12 @@ export default function Signin() {
 
       try{
        
-        const response = await axios.post('http://localhost:8000/api/v1/user/login', formData);
+        const response = await axios.post('http://ec-api.czduhsdfatdud7bz.eastus.azurecontainer.io/api/v1/user/login', formData);
         console.log('Logged In Successfully: ' ,response.data);
 
         const userCompany = response.data.company;
         const token = response.data.token;
 
-        // console.log('Ur token is:',token );
         
         localStorage.setItem('accessToken', token);
 
@@ -80,8 +79,6 @@ export default function Signin() {
           alert('Error logging in:', error);
       }
       
-      // Reload the page after form submission
-      // window.location.reload();
     }
   };
 
